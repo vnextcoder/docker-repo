@@ -1,0 +1,1452 @@
+    1  sudo su -
+    2  docker ps -a 
+    3  clear
+    4  docker run busybox echo "hello by busybox"
+    5  sudo su -
+    6  sudo docker ps -a 
+    7  pwd
+    8  mkdir dockerfiles
+    9  cd dockerfiles/
+   10  mkdir net
+   11  cd net/
+   12  vi Dockerfile
+   13  docker images
+   14  sudo docker pull busybox
+   15  docker run busybox echo hello world
+   16  sudo docker run busybox echo hello world
+   17  docker images
+   18  sudo docker images
+   19  sudo docker pull centos
+   20  sudo docker images
+   21  ls 
+   22  sudo su -
+   23  clear
+   24  docker ps -a 
+   25  clear
+   26  docker ps -a 
+   27  pwd
+   28  ls -l 
+   29  cd dockerfiles/
+   30  ls 
+   31  mkdir apache-2
+   32  cd apache-2/
+   33  vi Dockerfile
+   34  docker build 
+   35  docker build  .
+   36  docker images
+   37  docker tag --name myapache:latest b47d38f1ccd0
+   38  docker tag -name myapache:latest b47d38f1ccd0
+   39  docker tag myapache:latest b47d38f1ccd0
+   40  docker tag b47d38f1ccd0 myapache:latest
+   41  docker images
+   42  docker run -d --name apachedevops myapache 
+   43  docker ps 
+   44  docker ps -a 
+   45  docker inspect apachedevops
+   46  vi Dockerfile
+   47  docker build .
+   48  docker build . --name myapache:latest
+   49  docker build . --tag myapache:latest
+   50  docker run -d --name apachedevops myapache 
+   51  docker run -d --name apachedevops1 myapache 
+   52  docker ps 
+   53  docker ps  -a 
+   54  docker inspect apachedevops1
+   55  curl 172.17.0.2
+   56  docker run -d --name apachedevops2 -p 80:8023 myapache 
+   57  docker inspect apachedevops2
+   58  clear
+   59  docker ps -a 
+   60  docker rm (docker -ql)
+   61  docker rm `docker -ql`
+   62  docker rm `docker -q`
+   63  docker rm (docker -q)
+   64  docker ps -a 
+   65  docker rm $(docker -q)
+   66  docker rm $(docker -q)docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   67  docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   68  docker ps -a
+   69  docker stop apachedevop2
+   70  docker stop apachedevops1
+   71  docker ps -a
+   72  docker stop apachedevops2
+   73  docker stop affectionate_varahamihira
+   74  docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   75  docker ps -a | grep 'Exited' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   76  docker ps -a
+   77  docker rm affectionate_varahamihira
+   78  docker images
+   79  docker rmi myapache
+   80  docker rmi b47d38f1ccd0
+   81  vi Dockerfile 
+   82  cat "<h1>Hello from Docker container</h1>" > index.html
+   83  echo "<h1>Hello from Docker container</h1>" > index.html
+   84  ls 
+   85  ls -l 
+   86  vi Dockerfile 
+   87  docker build . --tag myapache:latest
+   88  docker run -d -p myapache
+   89  docker run -d -p 80823:80 myapache
+   90  docker run -d -p 8823:80 myapache
+   91  docker insspect myapache
+   92  docker inspect 7a93efcff6e904c349ef701195a60aa4b9ffe214cc3bc8d85f28712ac77f60f9
+   93  docker ps -a 
+   94  docker volume ls 
+   95  docker volume create webserver
+   96  docker volume ls 
+   97  docker volume inspect webserver
+   98  pwd
+   99  ls -l 
+  100  vi Dockerfile 
+  101  git 
+  102  sudo yum install git 
+  103  docker ps 
+  104  pwd
+  105  cd ..
+  106  git clone https://github.com/vnextcoder/ubiquitous-angular-solutions.git
+  107  ls 
+  108  cd ubiquitous-angular-solutions/
+  109  ls
+  110  cd module3-solution/
+  111  ls
+  112  cp -rf ../../dockerfiles/apache-2/module3
+  113  cp -rf . ../../dockerfiles/apache-2/module3
+  114  cd ..
+  115  cd dockerfiles/apache-2/
+  116  ls
+  117  aadocker run -d -p 8824:80 -v module3/var/html
+  118  cat Dockerfile 
+  119  docker run -d -p 8824:80 -v module3:/var/www/html --tag angularhost myapache2
+  120  docker run -d -p 8824:80 -v module3:/var/www/html --name angularhost myapache2
+  121  docker run -d -p 8824:80 -v module3:/var/www/html --name angularhost myapache
+  122  docker run -d -p 8824:80 -v ./module3:/var/www/html --name angularhost myapache
+  123  docker rm -f "717c5969e084a98fde2f28f3385cb1a3ec97877e0638ec88f495296e7b8b56fb"
+  124  docker run -d -p 8824:80 -v ./module3:/var/www/html --name angularhost myapache
+  125  docker run -d -p 8824:80 -v /module3:/var/www/html --name angularhost myapache
+  126  docker ps -a 
+  127  docker attach angularhost
+  128  aadocker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles//module3:/var/www/html --name angularhost myapache
+  129  pwd
+  130  cd dockerfiles/
+  131  ls
+  132  cd apache-2/
+  133  pwd
+  134  docker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  135  docker rm -f "ac6a6153c1bd8e1807236a631da789a7327d362152d501105380ea83d1871926"
+  136  docker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  137  docker ps -a 
+  138  docker inspect angularhost
+  139  docker run -d -p 8824:80 -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  140  docker rm -f angularhost
+  141  docker run -d -p 8824:80 -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  142  clear
+  143  history >history05032018
+    1  sudo su -
+    2  docker ps -a 
+    3  clear
+    4  docker run busybox echo "hello by busybox"
+    5  sudo su -
+    6  sudo docker ps -a 
+    7  pwd
+    8  mkdir dockerfiles
+    9  cd dockerfiles/
+   10  mkdir net
+   11  cd net/
+   12  vi Dockerfile
+   13  docker images
+   14  sudo docker pull busybox
+   15  docker run busybox echo hello world
+   16  sudo docker run busybox echo hello world
+   17  docker images
+   18  sudo docker images
+   19  sudo docker pull centos
+   20  sudo docker images
+   21  ls 
+   22  sudo su -
+   23  clear
+   24  docker ps -a 
+   25  clear
+   26  docker ps -a 
+   27  pwd
+   28  ls -l 
+   29  cd dockerfiles/
+   30  ls 
+   31  mkdir apache-2
+   32  cd apache-2/
+   33  vi Dockerfile
+   34  docker build 
+   35  docker build  .
+   36  docker images
+   37  docker tag --name myapache:latest b47d38f1ccd0
+   38  docker tag -name myapache:latest b47d38f1ccd0
+   39  docker tag myapache:latest b47d38f1ccd0
+   40  docker tag b47d38f1ccd0 myapache:latest
+   41  docker images
+   42  docker run -d --name apachedevops myapache 
+   43  docker ps 
+   44  docker ps -a 
+   45  docker inspect apachedevops
+   46  vi Dockerfile
+   47  docker build .
+   48  docker build . --name myapache:latest
+   49  docker build . --tag myapache:latest
+   50  docker run -d --name apachedevops myapache 
+   51  docker run -d --name apachedevops1 myapache 
+   52  docker ps 
+   53  docker ps  -a 
+   54  docker inspect apachedevops1
+   55  curl 172.17.0.2
+   56  docker run -d --name apachedevops2 -p 80:8023 myapache 
+   57  docker inspect apachedevops2
+   58  clear
+   59  docker ps -a 
+   60  docker rm (docker -ql)
+   61  docker rm `docker -ql`
+   62  docker rm `docker -q`
+   63  docker rm (docker -q)
+   64  docker ps -a 
+   65  docker rm $(docker -q)
+   66  docker rm $(docker -q)docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   67  docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   68  docker ps -a
+   69  docker stop apachedevop2
+   70  docker stop apachedevops1
+   71  docker ps -a
+   72  docker stop apachedevops2
+   73  docker stop affectionate_varahamihira
+   74  docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   75  docker ps -a | grep 'Exited' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   76  docker ps -a
+   77  docker rm affectionate_varahamihira
+   78  docker images
+   79  docker rmi myapache
+   80  docker rmi b47d38f1ccd0
+   81  vi Dockerfile 
+   82  cat "<h1>Hello from Docker container</h1>" > index.html
+   83  echo "<h1>Hello from Docker container</h1>" > index.html
+   84  ls 
+   85  ls -l 
+   86  vi Dockerfile 
+   87  docker build . --tag myapache:latest
+   88  docker run -d -p myapache
+   89  docker run -d -p 80823:80 myapache
+   90  docker run -d -p 8823:80 myapache
+   91  docker insspect myapache
+   92  docker inspect 7a93efcff6e904c349ef701195a60aa4b9ffe214cc3bc8d85f28712ac77f60f9
+   93  docker ps -a 
+   94  docker volume ls 
+   95  docker volume create webserver
+   96  docker volume ls 
+   97  docker volume inspect webserver
+   98  pwd
+   99  ls -l 
+  100  vi Dockerfile 
+  101  git 
+  102  sudo yum install git 
+  103  docker ps 
+  104  pwd
+  105  cd ..
+  106  git clone https://github.com/vnextcoder/ubiquitous-angular-solutions.git
+  107  ls 
+  108  cd ubiquitous-angular-solutions/
+  109  ls
+  110  cd module3-solution/
+  111  ls
+  112  cp -rf ../../dockerfiles/apache-2/module3
+  113  cp -rf . ../../dockerfiles/apache-2/module3
+  114  cd ..
+  115  cd dockerfiles/apache-2/
+  116  ls
+  117  aadocker run -d -p 8824:80 -v module3/var/html
+  118  cat Dockerfile 
+  119  docker run -d -p 8824:80 -v module3:/var/www/html --tag angularhost myapache2
+  120  docker run -d -p 8824:80 -v module3:/var/www/html --name angularhost myapache2
+  121  docker run -d -p 8824:80 -v module3:/var/www/html --name angularhost myapache
+  122  docker run -d -p 8824:80 -v ./module3:/var/www/html --name angularhost myapache
+  123  docker rm -f "717c5969e084a98fde2f28f3385cb1a3ec97877e0638ec88f495296e7b8b56fb"
+  124  docker run -d -p 8824:80 -v ./module3:/var/www/html --name angularhost myapache
+  125  docker run -d -p 8824:80 -v /module3:/var/www/html --name angularhost myapache
+  126  docker ps -a 
+  127  docker attach angularhost
+  128  aadocker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles//module3:/var/www/html --name angularhost myapache
+  129  pwd
+  130  cd dockerfiles/
+  131  ls
+  132  cd apache-2/
+  133  pwd
+  134  docker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  135  docker rm -f "ac6a6153c1bd8e1807236a631da789a7327d362152d501105380ea83d1871926"
+  136  docker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  137  docker ps -a 
+  138  docker inspect angularhost
+  139  docker run -d -p 8824:80 -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  140  docker rm -f angularhost
+  141  docker run -d -p 8824:80 -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  142  clear
+  143  history >history05032018
+  144  sudo yum install -y python-pip
+  145  sudo pip install docker-compose 
+  146  sudo pip install --upgrade pip
+  147  docker-compose
+  148  docker-compose -v
+  149  p[wd
+  150  clear
+  151  ps -a 
+  152  ps -ef
+  153  clear
+  154  git clone https://github.com/amitvashist7/docker-repo.git
+  155  cd docker-repo
+  156  ls 
+  157  cd docker-compose/
+  158  ls 
+  159  ls -l 
+  160  cd hello-world/
+  161  ls 
+  162  vi docker-compose.yml 
+  163  ls 
+  164  cd ..
+  165  ls 
+  166  cd mailhog/
+  167  ls
+  168  vi docker-compose.yml 
+  169  docker-compose 
+  170  docker-compose  up 
+  171  docker ps -a 
+  172  docker-compose  up -d
+  173  docker ps -a
+  174  docker ps -a 
+  175  pwd
+  176  cd ..
+  177  ls 
+  178  cd hello-world/
+  179  docker-compose  up -d
+  180  cd ..
+  181  cd mailhog/
+  182  ls 
+  183  vi docker-compose.yml 
+  184  docker-compose  up -d
+  185  docker ps -a 
+  186  docker-compose ps 
+  187  ls 
+  188  ls -l 
+  189  cd ..
+  190  ls 
+  191  cd wordpress/
+  192  ls 
+  193  vi docker-compose.yml 
+  194  cd nginx/
+  195  ls
+  196  vi wordpress.conf 
+  197  ls -l 
+  198  cd ..
+  199  ls -l 
+  200  docker-machine up -d 
+  201  sudo docker-machine up -d 
+  202  docker-compose up -d 
+  203  docker-compose status
+  204  docker-compose scale 
+  205  docker-compose up --sale 3
+  206  docker-compose up --sale nginx=3
+  207  docker-compose up -d --sale nginx=3
+  208  pwd
+  209  ls -l 
+  210  cd db-data/
+  211  ls 
+  212  cd ..
+  213  cd logs/
+  214  docker ps -a 
+  215  pwd
+  216  ls -l 
+  217  cd nginx/
+  218  ls 
+  219  cat error.log 
+  220  cat hakase-
+  221  cat hakase-access.log 
+  222  pwd
+  223  cd ..
+  224  pwd
+  225  cd ..
+  226  ls 
+  227  pwd
+  228  docker-machine ip
+  229  docker ps -a 
+  230  docker kill $(docker ps -aq)
+  231  docker ps -a 
+  232  pwd
+  233  clear
+  234  asafadocker swarm init --advertise-addr 
+  235  ipconfig
+  236  ip addr
+  237  docker swarm init --advertise-addr 172.31.0.50
+  238  docker swarm list 
+  239  docker swarm update
+  240  docker swarm ca
+  241  docker info
+  242  clear
+  243  docker info
+  244  clear
+  245  docker info
+  246  docker node ls 
+  247  docker node 
+  248  docker node  ps wy8n3j9vxjkisobw9rpnpwy0n
+  249  docker node ps webserver-centos2
+  250  docker node ps webserver-centos1
+  251  docker node ls 
+  252  docker node 
+  253  docker node update webserver-centos1
+  254  docker node ls 
+  255  docker node inspect webserver-centos1
+  256  docker service create --replicas 1 --name helloworld alpine ping docker.com
+  257  docker service 
+  258  docker service  ls 
+  259  docker service ls 
+  260  docker service ps 
+  261  docker service ps  helloworld
+  262  docker service inspect --pretty helloworld
+  263  docker service ps helloworld
+  264   docker service scale helloworld=5
+  265  docker service ps helloworld
+  266   docker service scale helloworld=50
+  267  docker service ps helloworld
+  268   docker service scale helloworld=5
+  269  docker service ps helloworl
+  270  docker service ps helloworld
+  271  cd ..
+  272  pwd
+  273  ls -l 
+  274  cd ..
+  275  ls 
+  276  cd docker-swarm/
+  277  ls
+  278  cd dev-env/
+  279  ls
+  280  ls -l 
+  281  vi requirements.txt 
+  282  ls 
+  283  vi app.py 
+  284  docker service ps helloworld
+  285  pwd
+  286  cd ..
+  287  ls 
+  288  cd new-app-deploy/
+  289  ls 
+  290  ls -l 
+  291  docker stack
+  292  docker stack deploy 
+  293  docker stack deploy  dockker-compose.yml 
+  294  docker stack deploy  docker-compose.yml
+  295  docker stack deploy --compose-file docker-compose.yml
+  296  docker stack deploy -c docker-compose.yml getstartedlab
+  297  docker ps 
+  298  docker service ps 
+  299  docker service ls 
+  300  docker service ps getstartedlab_web
+  301  for ((i=1;i<=10;i++)); do   curl -v --header "Connection: keep-alive" "http://localhost"; done
+  302  docker service ls 
+  303  docker service scale getstartedlab_web=10
+  304  docker service ls 
+  305  docker service scale getstartedlab_web=15
+  306  docker service scale getstartedlab_web=5
+  307  docker service ps 
+  308  docker service ls
+  309  docker service scale getstartedlab_web=10
+  310  docker service scale getstartedlab_web=50
+  311  docker service ps getstartedlab_web
+  312  docker service scale getstartedlab_web=5
+  313  docker service ps getstartedlab_web
+  314  docker service ps getstartedlab_web | grep Running
+  315  docker service ps getstartedlab_web | grep Running | wc -l
+  316  docker swarm ls 
+  317  docker node ls 
+  318  clear
+  319  sudo shutdown -h 0 
+  320  adocker run -it redis redis-cli -h  -p 6379
+  321  docker ps -a 
+  322  docker rm $(docker -qa)
+  323  docker rm $(docker ps -qa)
+  324  docker ps -a 
+  325  docker inspect 9bdb0fca2038 | grep "IPAddress"
+  326  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 9bdb0fca2038
+  327  docker inspect --format '{{ .NetworkSettings.IPAddress }}' 9bdb0fca2038
+  328  docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
+  329  docker images 
+  330  docker ps -a 
+  331  docker run -it redis redis-cli -h 10.0.2.27 -p 6379
+  332  docker run -it redis redis-cli -h 10.255.0.50 -p 6379
+  333  docker ps -a 
+  334  docker run -it redis redis-cli -h localhost -p 6379
+  335  docker ps 
+  336  clear 
+  337  sudo systemctl start docker
+  338  docker ps 
+  339  docker rm helloworld.4.qn692s50l9w2z9iljahvbs394
+  340  docker service ls 
+  341  docker service rm helloworld 
+  342  docker service ls 
+  343  docker rm helloworld.4.qn692s50l9w2z9iljahvbs394
+  344  docker ps 
+  345  docker rm helloworld.4.qn692s50l9w2z9iljahvbs394
+  346  docker ps 
+  347  docker service ls 
+  348  docker service scale getstartedlab_web=3
+  349  ip addr 
+  350  pwd
+  351  ls -l 
+  352  cd dockerfiles/
+  353  ls 
+  354  cd ..
+  355  cd ubiquitous-angular-solutions/
+  356  ls 
+  357  cd module3-solution/
+  358  ls 
+  359  cd ..
+  360  ls -l 
+  361  vi _config.yml 
+  362  cd ..
+  363  ls -l 
+  364  cd dockerfiles/
+  365  ls -l 
+  366  docker ps -a 
+  367  hostname
+  368  docker service ls 
+  369  docker service scale getstartedlab_web=5
+  370  ls -l 
+  371  pwd
+  372  cd net/
+  373  ls 
+  374  vi Dockerfile 
+  375  ls 
+  376  cd ..
+  377  ls 
+  378  cd blak/
+  379  ls 
+  380  vi Dockerfile 
+  381  cd ..
+  382  ls 
+  383  vi apache-2/
+  384  cd apache-2/
+  385  ls 
+  386  cd docker-repo/
+  387  ls 
+  388  vi docker-swarm/
+  389  ls 
+  390  cd docker-swarm/
+  391  ls 
+  392  vi dev-env/
+  393  cd dev-env/
+  394  ls 
+  395  vi docker-compose.yml 
+  396  vim docker-compose.yml 
+  397  sudo yum install vim 
+  398  vim docker-compose.yml 
+  399  docker-compose up 
+  400  docker service ls 
+  401  docker service rm getstartedlab_visualizer
+  402  docker service rm getstartedlab_web
+  403  docker service ls 
+  404   docker stack deploy -c docker-compose.yml getstartedavin
+  405  docker service ls 
+  406  docker ps -a 
+  407  docker stac 
+  408  docker stack
+  409  docker stack ls 
+  410  docker stack ls rm getstartedavin
+  411  docker stack rm getstartedavin
+  412  ls 
+  413  vi docker-compose.yml 
+  414  vim docker-compose.yml 
+  415   docker stack deploy -c docker-compose.yml myfirstswarm
+  416  docker stack ls 
+  417  vim docker-compose.yml 
+  418   docker stack deploy -c docker-compose.yml myfirstswarm
+  419  docker ps -a 
+  420  docker service ls 
+  421  docker stack  ls 
+  422  ip addr show 
+  423  docker ps -a 
+  424  pwd
+  425  ls -l 
+  426  vi docker-compose.yml 
+  427  ls -l 
+  428  docker stack ls 
+  429  docker stack 
+  430  docker stack services 
+  431  docker stack services stack ls 
+  432  docker stack services stack 
+  433  docker stack services ls 
+  434  docker stack ls 
+  435  docker stack services myfirstswarm 
+  436  docker service myfirstswarm_web scale =5
+  437  docker service scale myfirstswarm_web=5
+  438  docker service scale myfirstswarm_web=15
+  439  docker node ls 
+  440  docker node 
+  441  docker node ps 
+  442  docker node ps  wy8n3j9vxjkisobw9rpnpwy0n
+  443  docker node ps  y1bhn59967nqiggl2ftgbb7si
+  444  docker service myfirstswarm_redis scale =3
+  445  docker service scale myfirstswarm_redis=3
+  446  docker service scale myfirstswarm_redis=1
+  447  docker service scale myfirstswarm_web=1
+  448  docker service scale myfirstswarm_redis=0
+  449  docker service scale myfirstswarm_redis=1
+  450  docker service scale myfirstswarm_redis=2
+  451  docker 
+  452  docker inspect 4b90f82e0e34eede273b83516314a03f331bc734b9d7118cf66786b5dddcb402
+  453  docker rm -f  4b90f82e0e34eede273b83516314a03f331bc734b9d7118cf66786b5dddcb402
+  454  docker service ls 
+  455  docker service 
+  456  docker service ps 
+  457  docker service ps myfirstswarm_redis
+  458  docker logs iz0ds5i1jwbl
+  459  docker logs
+  460  docker logs --help 
+  461  docker 
+  462  docker service ps myfirstswarm_redis
+  463  docker ps l8b4d8zg5q0d
+  464  docker logs l8b4d8zg5q0d
+  465  docker ps -a 
+  466  docker logs 9bdb0fca2038
+  467  ls -l 
+  468  vi docker-compose.yml 
+  469  clear
+  470  redis-cli
+  471  sudo yum install redis
+  472  aet http://download.redis.io/redis-stable.tar.gz
+  473  pwd
+  474  cd /tmp
+  475  wget http://download.redis.io/redis-stable.tar.gz
+  476  curl http://download.redis.io/redis-stable.tar.gz
+  477  clear
+  478  ls -l 
+  479  pwd
+  480  cd
+  481  ls 
+  482  cd dockerfiles/
+  483  ls 
+  484  cd net/
+  485  ls 
+  486  cd ..
+  487  ls 
+  488  cd apache-2/
+  489  ls 
+  490  cd docker-repo/
+  491  ls 
+  492  cd *swa*
+  493  ls 
+  494  cd dev-env/
+  495  ls 
+  496  vi docker-compose.yml 
+  497  ls -l 
+  498  cd ..
+  499  mkdir redis-cli
+  500  cd redis-cli/
+  501  vi Dockerfile
+  502  docker build --tag avin:redis-cli .
+  503  docker build -t avin:redis-cli .
+  504  9
+  505  docker ps -a 
+  506  pwd
+  507  ls 
+  508  cd dockerfiles/
+  509  ls 
+  510  cd apache-2/
+  511  ls 
+  512  cd docker-repo/
+  513  vi Doc
+  514  ls 
+  515  cd ..
+  516  ls 
+  517  vi Dockerfile 
+  518  d ..
+  519  pwd
+  520  cd ..
+  521  ls 
+  522  mkdir squash
+  523  ls 
+  524  cd squash/
+  525  ls 
+  526  ls -l 
+  527  vi Dockerfile
+  528  docker build -t squash .
+  529  docker history squash 
+  530  docker build --squash -t squash2 .
+  531  docker -version
+  532  docker version
+  533  docker inspect busybox:latest | grep -A 5 Layers
+  534  cat  /etc/systemd/system/docker.service.d/docker.conf
+  535  pwd
+  536  cd /var/lib
+  537  ls 
+  538  cd docker
+  539  ls 
+  540  sudo bash
+  541  docker ps -a 
+  542  systemctl start docker
+  543  sudo systemctl start docker
+  544  docker ps -a 
+  545  docker stack ls 
+  546  docker stack 
+  547  docker stack services myfirstswarm 
+  548  docker service ls 
+  549   docker version -f '{{.Server.Experimental}}'
+  550  vi /etc/docker/daemon.json
+  551  sudo vi /etc/docker/daemon.json
+  552  sudo systemctl restart docker
+  553   docker version -f '{{.Server.Experimental}}'
+  554  pwd
+  555  ls 
+  556  cd dockerfiles/
+  557  ls 
+  558  cd apache-2/
+  559  ls 
+  560  ccd ..
+  561  cd ..
+  562  cd squash/
+  563  ls 
+  564  docker images 
+  565  docker build --squash -t squash2 .
+  566  ls 
+  567  docker history squash2
+  568  docker history squash
+  569  pwd
+  570  clear
+  571  pwd
+  572  cd ..
+  573  ls -l 
+  574  cd apache-2/
+  575  ls 
+  576  history > history07052018
+    1  sudo su -
+    2  docker ps -a 
+    3  clear
+    4  docker run busybox echo "hello by busybox"
+    5  sudo su -
+    6  sudo docker ps -a 
+    7  pwd
+    8  mkdir dockerfiles
+    9  cd dockerfiles/
+   10  mkdir net
+   11  cd net/
+   12  vi Dockerfile
+   13  docker images
+   14  sudo docker pull busybox
+   15  docker run busybox echo hello world
+   16  sudo docker run busybox echo hello world
+   17  docker images
+   18  sudo docker images
+   19  sudo docker pull centos
+   20  sudo docker images
+   21  ls 
+   22  sudo su -
+   23  clear
+   24  docker ps -a 
+   25  clear
+   26  docker ps -a 
+   27  pwd
+   28  ls -l 
+   29  cd dockerfiles/
+   30  ls 
+   31  mkdir apache-2
+   32  cd apache-2/
+   33  vi Dockerfile
+   34  docker build 
+   35  docker build  .
+   36  docker images
+   37  docker tag --name myapache:latest b47d38f1ccd0
+   38  docker tag -name myapache:latest b47d38f1ccd0
+   39  docker tag myapache:latest b47d38f1ccd0
+   40  docker tag b47d38f1ccd0 myapache:latest
+   41  docker images
+   42  docker run -d --name apachedevops myapache 
+   43  docker ps 
+   44  docker ps -a 
+   45  docker inspect apachedevops
+   46  vi Dockerfile
+   47  docker build .
+   48  docker build . --name myapache:latest
+   49  docker build . --tag myapache:latest
+   50  docker run -d --name apachedevops myapache 
+   51  docker run -d --name apachedevops1 myapache 
+   52  docker ps 
+   53  docker ps  -a 
+   54  docker inspect apachedevops1
+   55  curl 172.17.0.2
+   56  docker run -d --name apachedevops2 -p 80:8023 myapache 
+   57  docker inspect apachedevops2
+   58  clear
+   59  docker ps -a 
+   60  docker rm (docker -ql)
+   61  docker rm `docker -ql`
+   62  docker rm `docker -q`
+   63  docker rm (docker -q)
+   64  docker ps -a 
+   65  docker rm $(docker -q)
+   66  docker rm $(docker -q)docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   67  docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   68  docker ps -a
+   69  docker stop apachedevop2
+   70  docker stop apachedevops1
+   71  docker ps -a
+   72  docker stop apachedevops2
+   73  docker stop affectionate_varahamihira
+   74  docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   75  docker ps -a | grep 'Exited' | awk '{print $1}' | xargs --no-run-if-empty docker rm 
+   76  docker ps -a
+   77  docker rm affectionate_varahamihira
+   78  docker images
+   79  docker rmi myapache
+   80  docker rmi b47d38f1ccd0
+   81  vi Dockerfile 
+   82  cat "<h1>Hello from Docker container</h1>" > index.html
+   83  echo "<h1>Hello from Docker container</h1>" > index.html
+   84  ls 
+   85  ls -l 
+   86  vi Dockerfile 
+   87  docker build . --tag myapache:latest
+   88  docker run -d -p myapache
+   89  docker run -d -p 80823:80 myapache
+   90  docker run -d -p 8823:80 myapache
+   91  docker insspect myapache
+   92  docker inspect 7a93efcff6e904c349ef701195a60aa4b9ffe214cc3bc8d85f28712ac77f60f9
+   93  docker ps -a 
+   94  docker volume ls 
+   95  docker volume create webserver
+   96  docker volume ls 
+   97  docker volume inspect webserver
+   98  pwd
+   99  ls -l 
+  100  vi Dockerfile 
+  101  git 
+  102  sudo yum install git 
+  103  docker ps 
+  104  pwd
+  105  cd ..
+  106  git clone https://github.com/vnextcoder/ubiquitous-angular-solutions.git
+  107  ls 
+  108  cd ubiquitous-angular-solutions/
+  109  ls
+  110  cd module3-solution/
+  111  ls
+  112  cp -rf ../../dockerfiles/apache-2/module3
+  113  cp -rf . ../../dockerfiles/apache-2/module3
+  114  cd ..
+  115  cd dockerfiles/apache-2/
+  116  ls
+  117  aadocker run -d -p 8824:80 -v module3/var/html
+  118  cat Dockerfile 
+  119  docker run -d -p 8824:80 -v module3:/var/www/html --tag angularhost myapache2
+  120  docker run -d -p 8824:80 -v module3:/var/www/html --name angularhost myapache2
+  121  docker run -d -p 8824:80 -v module3:/var/www/html --name angularhost myapache
+  122  docker run -d -p 8824:80 -v ./module3:/var/www/html --name angularhost myapache
+  123  docker rm -f "717c5969e084a98fde2f28f3385cb1a3ec97877e0638ec88f495296e7b8b56fb"
+  124  docker run -d -p 8824:80 -v ./module3:/var/www/html --name angularhost myapache
+  125  docker run -d -p 8824:80 -v /module3:/var/www/html --name angularhost myapache
+  126  docker ps -a 
+  127  docker attach angularhost
+  128  aadocker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles//module3:/var/www/html --name angularhost myapache
+  129  pwd
+  130  cd dockerfiles/
+  131  ls
+  132  cd apache-2/
+  133  pwd
+  134  docker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  135  docker rm -f "ac6a6153c1bd8e1807236a631da789a7327d362152d501105380ea83d1871926"
+  136  docker run -d -p 8824:80 --rm -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  137  docker ps -a 
+  138  docker inspect angularhost
+  139  docker run -d -p 8824:80 -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  140  docker rm -f angularhost
+  141  docker run -d -p 8824:80 -v /home/vagrant/dockerfiles/apache-2:/var/www/html --name angularhost myapache
+  142  clear
+  143  history >history05032018
+  144  sudo yum install -y python-pip
+  145  sudo pip install docker-compose 
+  146  sudo pip install --upgrade pip
+  147  docker-compose
+  148  docker-compose -v
+  149  p[wd
+  150  clear
+  151  ps -a 
+  152  ps -ef
+  153  clear
+  154  git clone https://github.com/amitvashist7/docker-repo.git
+  155  cd docker-repo
+  156  ls 
+  157  cd docker-compose/
+  158  ls 
+  159  ls -l 
+  160  cd hello-world/
+  161  ls 
+  162  vi docker-compose.yml 
+  163  ls 
+  164  cd ..
+  165  ls 
+  166  cd mailhog/
+  167  ls
+  168  vi docker-compose.yml 
+  169  docker-compose 
+  170  docker-compose  up 
+  171  docker ps -a 
+  172  docker-compose  up -d
+  173  docker ps -a
+  174  docker ps -a 
+  175  pwd
+  176  cd ..
+  177  ls 
+  178  cd hello-world/
+  179  docker-compose  up -d
+  180  cd ..
+  181  cd mailhog/
+  182  ls 
+  183  vi docker-compose.yml 
+  184  docker-compose  up -d
+  185  docker ps -a 
+  186  docker-compose ps 
+  187  ls 
+  188  ls -l 
+  189  cd ..
+  190  ls 
+  191  cd wordpress/
+  192  ls 
+  193  vi docker-compose.yml 
+  194  cd nginx/
+  195  ls
+  196  vi wordpress.conf 
+  197  ls -l 
+  198  cd ..
+  199  ls -l 
+  200  docker-machine up -d 
+  201  sudo docker-machine up -d 
+  202  docker-compose up -d 
+  203  docker-compose status
+  204  docker-compose scale 
+  205  docker-compose up --sale 3
+  206  docker-compose up --sale nginx=3
+  207  docker-compose up -d --sale nginx=3
+  208  pwd
+  209  ls -l 
+  210  cd db-data/
+  211  ls 
+  212  cd ..
+  213  cd logs/
+  214  docker ps -a 
+  215  pwd
+  216  ls -l 
+  217  cd nginx/
+  218  ls 
+  219  cat error.log 
+  220  cat hakase-
+  221  cat hakase-access.log 
+  222  pwd
+  223  cd ..
+  224  pwd
+  225  cd ..
+  226  ls 
+  227  pwd
+  228  docker-machine ip
+  229  docker ps -a 
+  230  docker kill $(docker ps -aq)
+  231  docker ps -a 
+  232  pwd
+  233  clear
+  234  asafadocker swarm init --advertise-addr 
+  235  ipconfig
+  236  ip addr
+  237  docker swarm init --advertise-addr 172.31.0.50
+  238  docker swarm list 
+  239  docker swarm update
+  240  docker swarm ca
+  241  docker info
+  242  clear
+  243  docker info
+  244  clear
+  245  docker info
+  246  docker node ls 
+  247  docker node 
+  248  docker node  ps wy8n3j9vxjkisobw9rpnpwy0n
+  249  docker node ps webserver-centos2
+  250  docker node ps webserver-centos1
+  251  docker node ls 
+  252  docker node 
+  253  docker node update webserver-centos1
+  254  docker node ls 
+  255  docker node inspect webserver-centos1
+  256  docker service create --replicas 1 --name helloworld alpine ping docker.com
+  257  docker service 
+  258  docker service  ls 
+  259  docker service ls 
+  260  docker service ps 
+  261  docker service ps  helloworld
+  262  docker service inspect --pretty helloworld
+  263  docker service ps helloworld
+  264   docker service scale helloworld=5
+  265  docker service ps helloworld
+  266   docker service scale helloworld=50
+  267  docker service ps helloworld
+  268   docker service scale helloworld=5
+  269  docker service ps helloworl
+  270  docker service ps helloworld
+  271  cd ..
+  272  pwd
+  273  ls -l 
+  274  cd ..
+  275  ls 
+  276  cd docker-swarm/
+  277  ls
+  278  cd dev-env/
+  279  ls
+  280  ls -l 
+  281  vi requirements.txt 
+  282  ls 
+  283  vi app.py 
+  284  docker service ps helloworld
+  285  pwd
+  286  cd ..
+  287  ls 
+  288  cd new-app-deploy/
+  289  ls 
+  290  ls -l 
+  291  docker stack
+  292  docker stack deploy 
+  293  docker stack deploy  dockker-compose.yml 
+  294  docker stack deploy  docker-compose.yml
+  295  docker stack deploy --compose-file docker-compose.yml
+  296  docker stack deploy -c docker-compose.yml getstartedlab
+  297  docker ps 
+  298  docker service ps 
+  299  docker service ls 
+  300  docker service ps getstartedlab_web
+  301  for ((i=1;i<=10;i++)); do   curl -v --header "Connection: keep-alive" "http://localhost"; done
+  302  docker service ls 
+  303  docker service scale getstartedlab_web=10
+  304  docker service ls 
+  305  docker service scale getstartedlab_web=15
+  306  docker service scale getstartedlab_web=5
+  307  docker service ps 
+  308  docker service ls
+  309  docker service scale getstartedlab_web=10
+  310  docker service scale getstartedlab_web=50
+  311  docker service ps getstartedlab_web
+  312  docker service scale getstartedlab_web=5
+  313  docker service ps getstartedlab_web
+  314  docker service ps getstartedlab_web | grep Running
+  315  docker service ps getstartedlab_web | grep Running | wc -l
+  316  docker swarm ls 
+  317  docker node ls 
+  318  clear
+  319  sudo shutdown -h 0 
+  320  adocker run -it redis redis-cli -h  -p 6379
+  321  docker ps -a 
+  322  docker rm $(docker -qa)
+  323  docker rm $(docker ps -qa)
+  324  docker ps -a 
+  325  docker inspect 9bdb0fca2038 | grep "IPAddress"
+  326  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 9bdb0fca2038
+  327  docker inspect --format '{{ .NetworkSettings.IPAddress }}' 9bdb0fca2038
+  328  docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
+  329  docker images 
+  330  docker ps -a 
+  331  docker run -it redis redis-cli -h 10.0.2.27 -p 6379
+  332  docker run -it redis redis-cli -h 10.255.0.50 -p 6379
+  333  docker ps -a 
+  334  docker run -it redis redis-cli -h localhost -p 6379
+  335  docker ps 
+  336  clear 
+  337  sudo systemctl start docker
+  338  docker ps 
+  339  docker rm helloworld.4.qn692s50l9w2z9iljahvbs394
+  340  docker service ls 
+  341  docker service rm helloworld 
+  342  docker service ls 
+  343  docker rm helloworld.4.qn692s50l9w2z9iljahvbs394
+  344  docker ps 
+  345  docker rm helloworld.4.qn692s50l9w2z9iljahvbs394
+  346  docker ps 
+  347  docker service ls 
+  348  docker service scale getstartedlab_web=3
+  349  ip addr 
+  350  pwd
+  351  ls -l 
+  352  cd dockerfiles/
+  353  ls 
+  354  cd ..
+  355  cd ubiquitous-angular-solutions/
+  356  ls 
+  357  cd module3-solution/
+  358  ls 
+  359  cd ..
+  360  ls -l 
+  361  vi _config.yml 
+  362  cd ..
+  363  ls -l 
+  364  cd dockerfiles/
+  365  ls -l 
+  366  docker ps -a 
+  367  hostname
+  368  docker service ls 
+  369  docker service scale getstartedlab_web=5
+  370  ls -l 
+  371  pwd
+  372  cd net/
+  373  ls 
+  374  vi Dockerfile 
+  375  ls 
+  376  cd ..
+  377  ls 
+  378  cd blak/
+  379  ls 
+  380  vi Dockerfile 
+  381  cd ..
+  382  ls 
+  383  vi apache-2/
+  384  cd apache-2/
+  385  ls 
+  386  cd docker-repo/
+  387  ls 
+  388  vi docker-swarm/
+  389  ls 
+  390  cd docker-swarm/
+  391  ls 
+  392  vi dev-env/
+  393  cd dev-env/
+  394  ls 
+  395  vi docker-compose.yml 
+  396  vim docker-compose.yml 
+  397  sudo yum install vim 
+  398  vim docker-compose.yml 
+  399  docker-compose up 
+  400  docker service ls 
+  401  docker service rm getstartedlab_visualizer
+  402  docker service rm getstartedlab_web
+  403  docker service ls 
+  404   docker stack deploy -c docker-compose.yml getstartedavin
+  405  docker service ls 
+  406  docker ps -a 
+  407  docker stac 
+  408  docker stack
+  409  docker stack ls 
+  410  docker stack ls rm getstartedavin
+  411  docker stack rm getstartedavin
+  412  ls 
+  413  vi docker-compose.yml 
+  414  vim docker-compose.yml 
+  415   docker stack deploy -c docker-compose.yml myfirstswarm
+  416  docker stack ls 
+  417  vim docker-compose.yml 
+  418   docker stack deploy -c docker-compose.yml myfirstswarm
+  419  docker ps -a 
+  420  docker service ls 
+  421  docker stack  ls 
+  422  ip addr show 
+  423  docker ps -a 
+  424  pwd
+  425  ls -l 
+  426  vi docker-compose.yml 
+  427  ls -l 
+  428  docker stack ls 
+  429  docker stack 
+  430  docker stack services 
+  431  docker stack services stack ls 
+  432  docker stack services stack 
+  433  docker stack services ls 
+  434  docker stack ls 
+  435  docker stack services myfirstswarm 
+  436  docker service myfirstswarm_web scale =5
+  437  docker service scale myfirstswarm_web=5
+  438  docker service scale myfirstswarm_web=15
+  439  docker node ls 
+  440  docker node 
+  441  docker node ps 
+  442  docker node ps  wy8n3j9vxjkisobw9rpnpwy0n
+  443  docker node ps  y1bhn59967nqiggl2ftgbb7si
+  444  docker service myfirstswarm_redis scale =3
+  445  docker service scale myfirstswarm_redis=3
+  446  docker service scale myfirstswarm_redis=1
+  447  docker service scale myfirstswarm_web=1
+  448  docker service scale myfirstswarm_redis=0
+  449  docker service scale myfirstswarm_redis=1
+  450  docker service scale myfirstswarm_redis=2
+  451  docker 
+  452  docker inspect 4b90f82e0e34eede273b83516314a03f331bc734b9d7118cf66786b5dddcb402
+  453  docker rm -f  4b90f82e0e34eede273b83516314a03f331bc734b9d7118cf66786b5dddcb402
+  454  docker service ls 
+  455  docker service 
+  456  docker service ps 
+  457  docker service ps myfirstswarm_redis
+  458  docker logs iz0ds5i1jwbl
+  459  docker logs
+  460  docker logs --help 
+  461  docker 
+  462  docker service ps myfirstswarm_redis
+  463  docker ps l8b4d8zg5q0d
+  464  docker logs l8b4d8zg5q0d
+  465  docker ps -a 
+  466  docker logs 9bdb0fca2038
+  467  ls -l 
+  468  vi docker-compose.yml 
+  469  clear
+  470  redis-cli
+  471  sudo yum install redis
+  472  aet http://download.redis.io/redis-stable.tar.gz
+  473  pwd
+  474  cd /tmp
+  475  wget http://download.redis.io/redis-stable.tar.gz
+  476  curl http://download.redis.io/redis-stable.tar.gz
+  477  clear
+  478  ls -l 
+  479  pwd
+  480  cd
+  481  ls 
+  482  cd dockerfiles/
+  483  ls 
+  484  cd net/
+  485  ls 
+  486  cd ..
+  487  ls 
+  488  cd apache-2/
+  489  ls 
+  490  cd docker-repo/
+  491  ls 
+  492  cd *swa*
+  493  ls 
+  494  cd dev-env/
+  495  ls 
+  496  vi docker-compose.yml 
+  497  ls -l 
+  498  cd ..
+  499  mkdir redis-cli
+  500  cd redis-cli/
+  501  vi Dockerfile
+  502  docker build --tag avin:redis-cli .
+  503  docker build -t avin:redis-cli .
+  504  9
+  505  docker ps -a 
+  506  pwd
+  507  ls 
+  508  cd dockerfiles/
+  509  ls 
+  510  cd apache-2/
+  511  ls 
+  512  cd docker-repo/
+  513  vi Doc
+  514  ls 
+  515  cd ..
+  516  ls 
+  517  vi Dockerfile 
+  518  d ..
+  519  pwd
+  520  cd ..
+  521  ls 
+  522  mkdir squash
+  523  ls 
+  524  cd squash/
+  525  ls 
+  526  ls -l 
+  527  vi Dockerfile
+  528  docker build -t squash .
+  529  docker history squash 
+  530  docker build --squash -t squash2 .
+  531  docker -version
+  532  docker version
+  533  docker inspect busybox:latest | grep -A 5 Layers
+  534  cat  /etc/systemd/system/docker.service.d/docker.conf
+  535  pwd
+  536  cd /var/lib
+  537  ls 
+  538  cd docker
+  539  ls 
+  540  sudo bash
+  541  docker ps -a 
+  542  systemctl start docker
+  543  sudo systemctl start docker
+  544  docker ps -a 
+  545  docker stack ls 
+  546  docker stack 
+  547  docker stack services myfirstswarm 
+  548  docker service ls 
+  549   docker version -f '{{.Server.Experimental}}'
+  550  vi /etc/docker/daemon.json
+  551  sudo vi /etc/docker/daemon.json
+  552  sudo systemctl restart docker
+  553   docker version -f '{{.Server.Experimental}}'
+  554  pwd
+  555  ls 
+  556  cd dockerfiles/
+  557  ls 
+  558  cd apache-2/
+  559  ls 
+  560  ccd ..
+  561  cd ..
+  562  cd squash/
+  563  ls 
+  564  docker images 
+  565  docker build --squash -t squash2 .
+  566  ls 
+  567  docker history squash2
+  568  docker history squash
+  569  pwd
+  570  clear
+  571  pwd
+  572  cd ..
+  573  ls -l 
+  574  cd apache-2/
+  575  ls 
+  576  history > history07052018
+  577  ls 
+  578  vi history05032018 
+  579  cd docker-repo/
+  580  ls 
+  581  cd docker-swarm/
+  582  ls 
+  583  ls -l 
+  584  rm -rf redis-cli/
+  585  ls 
+  586  cd dev-env/
+  587  ls 
+  588  vi *.yml
+  589  cd ..
+  590  pwd
+  591  cd ..
+  592  ls 
+  593  cd ..
+  594  ls 
+  595  vi history05032018 
+  596  ls -l 
+  597  mv history05032018 history03052018
+  598  ls 
+  599  ls -l 
+  600  docker swarm init 
+  601  ls 
+  602  cd docker-repo/
+  603  ls 
+  604  cd docker-swarm/
+  605  ls 
+  606  cd dev-env/
+  607  ls 
+  608  vi requirements.txt 
+  609  sudo pip install -r requirements.txt 
+  610  ls -l 
+  611  vi dockerfile 
+  612  docker build -t friendlyhello .
+  613  docker image ls 
+  614  docker run -p 4000:80 friendlyhello
+  615  docker run -d -p 4000:80 friendlyhello
+  616  docker tag image avinb:web
+  617  docker tag image friendlyhello avinb:web
+  618  docker tag  friendlyhello avinb:web
+  619  docker images 
+  620  docker push avinb:web
+  621  docker login 
+  622  docker push avinb:web
+  623  docker tag  friendlyhello avinb/web:latest
+  624  docker push avinb/web:latest
+  625  ls -l 
+  626  vi docker-compose.yml 
+  627  pwd
+  628  ls -l 
+  629  cd dockerfiles/
+  630  ls -l
+  631  rm -rf blak
+  632  sudo rm -rf blak
+  633  ls 
+  634  cd net
+  635  dir
+  636  ls 
+  637  vi Dockerfile 
+  638  cd ..
+  639  ls 
+  640  sudo rm -rf net
+  641  ls 
+  642  cd squash/
+  643  ls 
+  644  cd ..
+  645  ls 
+  646  cd apache-2/
+  647  ls 
+  648  vi Dockerfile 
+  649  ls -l 
+  650  mv docker-repo ../
+  651  ls 
+  652  ls -l 
+  653  vi module3/
+  654  ls 
+  655  vi Dockerfile 
+  656  ls -l 
+  657  pwd
+  658  ls -l 
+  659  cd ..
+  660  cd docker-repo/
+  661  ls 
+  662  pwd
+  663  cd ..
+  664  pwd
+  665  ls -l 
+  666  mv apache-2 docker-repo/
+  667  ls 
+  668  ls -l 
+  669  cd docker-repo/
+  670  ls 
+  671  cd ..
+  672  ls 
+  673  mv squash docker-repo/
+  674  ls 
+  675  cd docker-repo/
+  676  ls 
+  677  git status 
+  678  git remote -v 
+  679  git remote set-url https://github.com/vnextcoder/docker-repo.git
+  680  git remote set-url origin https://github.com/vnextcoder/docker-repo.git
+  681  git remote -v 
+  682  git pull 
+  683  git fetch 
+  684  git status
+  685  cd docker-compose/
+  686  ls 
+  687  cd wordpress/
+  688  ls 
+  689  cd wordpress/
+  690  ls 
+  691  cd ..
+  692  pwd
+  693  cd ..
+  694  clear 
+  695  pwd
+  696  ls 
+  697  cd ..
+  698  ls 
+  699  git status 
+  700  git add squash
+  701  git status 
+  702  git add -u
+  703  git status 
+  704  git add apache-2
+  705  git status
+  706  cd apache-2/
+  707  ls 
+  708  vi history0
+  709  vi history03052018 
+  710  vi history07052018 
+  711  ls -l 
+  712  mv history* $HOME/
+  713  ls -l 
+  714  vi Dockerfile 
+  715  pwd
+  716  cd ..
+  717  ls -l 
+  718  clear 
+  719  git status 
+  720  git reset
+  721  git status 
+  722  git add apache-2
+  723  git add squash
+  724  git add -u
+  725  git status 
+  726  git commit -m "new docker files for Apache & Squashing"
+  727   git config --global user.email "vnextcoder@gmail.com"
+  728   git config --global user.name "Avinash Barnwal"
+  729  git commit -m "new docker files for Apache & Squashing"
+  730  git push 
+  731  pwd
+  732  ls -l 
+  733  history > $HOME/history07032018-2.txt
